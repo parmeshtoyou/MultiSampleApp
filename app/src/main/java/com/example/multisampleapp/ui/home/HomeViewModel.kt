@@ -27,6 +27,10 @@ class HomeViewModel : ViewModel() {
         )
     }
 
+    fun getItemCount() = dummyList.value?.size
+
+    fun getItemAt(index: Int) = dummyList.value?.get(index)
+
     private fun groupByText1(list: MutableList<ItemModel>): List<ItemModel> {
         val groupByText1 = list.groupBy { it.text1 }
         groupByText1.forEach { entry ->

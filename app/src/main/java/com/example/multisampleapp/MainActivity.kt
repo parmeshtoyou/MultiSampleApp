@@ -36,7 +36,6 @@ class MainActivity : AppCompatActivity() {
 
         drawerLayout = findViewById(R.id.drawer_layout)
 
-
         communicatorViewModel =
             ViewModelProvider(this, viewModelFactory)[CommunicatorViewModel::class.java]
 
