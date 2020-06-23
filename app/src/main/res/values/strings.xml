@@ -10,6 +10,10 @@
     <string name="menu_recycler_view_1">Recycler View 1</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_timer">Countdown Timer</string>
 
     <string name="home_second">Home Second</string>
+    <string name="start">start</string>
+    <string name="reset">reset</string>
+    <string name="default_time">00:00</string>
 </resources>

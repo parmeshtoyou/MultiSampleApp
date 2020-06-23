@@ -40,4 +40,10 @@
         android:name="com.example.multisampleapp.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_timer"
+        android:name="com.example.multisampleapp.ui.timer.CountDownTimerFragment"
+        android:label="CountDownTimerFragment"
+        tools:layout="@layout/fragment_count_down_timer" />
 </navigation>
