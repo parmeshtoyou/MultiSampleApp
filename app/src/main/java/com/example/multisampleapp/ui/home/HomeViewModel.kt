@@ -17,12 +17,13 @@ class HomeViewModel : ViewModel() {
                 ItemModel("Text1", "Text2", "Text3", "Text4"),
                 ItemModel("Text1", "Text2", "Text3", "Text4"),
                 ItemModel("Text1", "Text2", "Text3", "Text4"),
-                ItemModel("Text1", "Text2", "Text3", "Text4"),
+                ItemModel("Text1", "Text2", "Text3", "Text4")
+                /*ItemModel("Text2", "Text2", "Text3", "Text4"),
                 ItemModel("Text2", "Text2", "Text3", "Text4"),
                 ItemModel("Text2", "Text2", "Text3", "Text4"),
                 ItemModel("Text3", "Text2", "Text3", "Text4"),
                 ItemModel("Text4", "Text2", "Text3", "Text4"),
-                ItemModel("Text5", "Text2", "Text3", "Text4")
+                ItemModel("Last Item", "Text2", "Text3", "Text4")*/
             ).toMutableList()
         )
     }
