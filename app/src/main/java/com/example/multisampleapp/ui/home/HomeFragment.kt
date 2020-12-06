@@ -1,5 +1,8 @@
 package com.example.multisampleapp.ui.home
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context.CLIPBOARD_SERVICE
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -21,6 +24,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         initView()
         initViewModel()
         observeItemList()
+
+        (requireActivity().getSystemService(CLIPBOARD_SERVICE) as ClipboardManager).apply {
+            setPrimaryClip(ClipData.newPlainText("simple text", "some other text"))
+        }
     }
 
     private fun initView() {
