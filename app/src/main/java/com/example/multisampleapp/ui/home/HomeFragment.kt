@@ -1,10 +1,9 @@
 package com.example.multisampleapp.ui.home
 
-import android.content.ClipData
-import android.content.ClipboardManager
-import android.content.Context.CLIPBOARD_SERVICE
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -12,6 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.multisampleapp.R
 import com.example.multisampleapp.model.ItemModel
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -25,9 +28,38 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         initViewModel()
         observeItemList()
 
-        (requireActivity().getSystemService(CLIPBOARD_SERVICE) as ClipboardManager).apply {
+        /*(requireActivity().getSystemService(CLIPBOARD_SERVICE) as ClipboardManager).apply {
             setPrimaryClip(ClipData.newPlainText("simple text", "some other text"))
+        }*/
+
+        val database = FirebaseDatabase.getInstance("https://multisampleapp-default-rtdb.firebaseio.com/")
+        val myRef = database.getReference("fName")
+
+        saveInfo.setOnClickListener {
+            //myRef.setValue("Parmesh")
+            showToastMsg("Hello World")
         }
+
+
+        myRef.addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+                //showToastMsg("on Cancelled: ${p0.message}")
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                //showToastMsg("onDataChange key:${p0.key} and value:${p0.value}")
+            }
+        })
+    }
+
+    fun showToastMsg(msg: String?) {
+        requireActivity().runOnUiThread(Runnable {
+            Toast.makeText(
+                requireContext(),
+                msg,
+                Toast.LENGTH_LONG
+            ).show()
+        })
     }
 
     private fun initView() {
