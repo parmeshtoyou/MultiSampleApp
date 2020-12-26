@@ -5,16 +5,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.multisampleapp.R
-import com.example.multisampleapp.model.ItemModel
+import com.example.multisampleapp.model.Post
 import kotlinx.android.synthetic.main.recycler_view_item_layout.view.*
 
 class ItemListAdapter : RecyclerView.Adapter<ItemListAdapter.ViewHolder>() {
 
-    private var itemList = mutableListOf<ItemModel>()
+    private var itemList = mutableListOf<Post>()
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        fun bindData(itemModel: ItemModel) {
-            itemView.textView2.text = itemModel.text1
+        fun bindData(itemModel: Post) {
+            /*itemView.textView2.text = itemModel.text1
             itemView.textView3.text = itemModel.text2
             itemView.textView4.text = itemModel.text3
             itemView.textView5.text = itemModel.text4
@@ -25,7 +25,9 @@ class ItemListAdapter : RecyclerView.Adapter<ItemListAdapter.ViewHolder>() {
             } else {
                 itemView.full_horizontal_line.visibility = View.VISIBLE
                 itemView.half_horizontal_line.visibility = View.INVISIBLE
-            }
+            }*/
+
+            itemView.textView2.text = itemModel.title
         }
     }
 
@@ -41,7 +43,7 @@ class ItemListAdapter : RecyclerView.Adapter<ItemListAdapter.ViewHolder>() {
         holder.bindData(itemList[position])
     }
 
-    fun setData(listOfItem: List<ItemModel>) {
+    fun setData(listOfItem: List<Post>) {
         itemList.clear()
         itemList = listOfItem.toMutableList()
         notifyDataSetChanged()

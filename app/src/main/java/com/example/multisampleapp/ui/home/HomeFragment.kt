@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.multisampleapp.R
-import com.example.multisampleapp.model.ItemModel
+import com.example.multisampleapp.model.Post
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -29,10 +29,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = listAdapter
         }
+
+        fetchUser.setOnClickListener {
+            homeViewModel.getPostList()
+        }
     }
 
     private fun observeItemList() {
-        homeViewModel.dummyList.observe(viewLifecycleOwner, Observer {
+        homeViewModel.postLiveData.observe(viewLifecycleOwner, Observer {
             updateRecyclerView(it)
         })
     }
@@ -42,7 +46,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             ViewModelProvider(this)[HomeViewModel::class.java]
     }
 
-    private fun updateRecyclerView(itemList: List<ItemModel>) {
+    private fun updateRecyclerView(itemList: List<Post>) {
         listAdapter.setData(itemList)
 
         recyclerView1.addOnScrollListener(object : RecyclerView.OnScrollListener() {
