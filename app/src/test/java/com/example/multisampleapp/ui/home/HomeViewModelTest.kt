@@ -1,49 +1,16 @@
 package com.example.multisampleapp.ui.home
 
-import com.example.multisampleapp.MainCoroutineRule
 import junit.framework.TestCase
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.ObsoleteCoroutinesApi
-import kotlinx.coroutines.newSingleThreadContext
-import kotlinx.coroutines.test.TestCoroutineDispatcher
-import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.setMain
-import org.junit.After
-import org.junit.Before
-import org.junit.Rule
+import org.junit.Test
 import org.junit.runner.RunWith
+import org.robolectric.RobolectricTestRunner
+import org.robolectric.annotation.Config
 
-@RunWith(RoboelectricTestRunner::class)
-@ObsoleteCoroutinesApi
+@RunWith(RobolectricTestRunner::class)
+@Config(manifest = Config.NONE, sdk = [28])
 class HomeViewModelTest : TestCase() {
 
-    @Rule
-    @JvmField
-    val instantTaskExecutorRule = InstantTaskExecutorRule()
-
-    @ExperimentalCoroutinesApi
-    @get:Rule
-    val coroutineRule = MainCoroutineRule()
-
-    @ExperimentalCoroutinesApi
-    val dispatcher = TestCoroutineDispatcher()
-
-    private val mainThreadSurrogate = newSingleThreadContext("UI thread")
-
-
-    @ExperimentalCoroutinesApi
-    @Before
-    fun setup() {
-        Dispatchers.setMain(mainThreadSurrogate)
-    }
-
-    @ExperimentalCoroutinesApi
-    @After
-    fun tearDown1() {
-        Dispatchers.resetMain()
-    }
-
+    @Test
     fun testGetPostList() {
         val homeViewModel = HomeViewModel()
 
@@ -51,6 +18,17 @@ class HomeViewModelTest : TestCase() {
 
         homeViewModel.postLiveData.observeForever {
             assertNotNull(it)
+            assertEquals(100, it.size)
+            assertEquals(1, it[0].id)
+            assertEquals(1, it[0].userId)
+            assertEquals(
+                "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+                it[0].title
+            )
+            assertEquals(
+                "quia et suscipit\\nsuscipit recusandae consequuntur expedita et cum\\nreprehenderit molestiae ut ut quas totam\\nnostrum rerum est autem sunt rem eveniet architecto",
+                it[0].body
+            )
         }
     }
 }
