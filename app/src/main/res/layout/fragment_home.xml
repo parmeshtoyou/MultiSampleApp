@@ -22,7 +22,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/recyclerView1" />
 
-
         <Button
             android:id="@+id/fetchUser"
             android:layout_width="wrap_content"
@@ -32,7 +31,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/listStatus" />
 
-
-
-
+        <Button
+            android:id="@+id/cameraPermission"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Camera Permission"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fetchUser" />
 </androidx.constraintlayout.widget.ConstraintLayout>
