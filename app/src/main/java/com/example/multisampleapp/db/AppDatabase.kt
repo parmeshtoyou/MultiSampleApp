@@ -8,9 +8,10 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import com.example.multisampleapp.dao.NotesDao
+import com.example.multisampleapp.model.Note
 import com.example.multisampleapp.worker.DatabaseWorker
 
-@Database(entities = [NotesDao::class], version = 1)
+@Database(entities = [Note::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun notesDao(): NotesDao
 
@@ -24,6 +25,8 @@ abstract class AppDatabase : RoomDatabase() {
             }
         }
 
+        fun getDatabase() = instance
+
         private fun buildDatabase(context: Context): AppDatabase {
             return Room.databaseBuilder(context, AppDatabase::class.java, "note-db")
                 .addCallback(object : RoomDatabase.Callback() {
@@ -35,5 +38,7 @@ abstract class AppDatabase : RoomDatabase() {
                 })
                 .build()
         }
+
+
     }
 }

@@ -1,5 +1,7 @@
 package com.example.multisampleapp.repo
 
-object NotesRepository {
+import com.example.multisampleapp.db.AppDatabase
 
+object NotesRepository {
+    fun getNotesList() = AppDatabase.getDatabase()?.notesDao()?.getAll()
 }
