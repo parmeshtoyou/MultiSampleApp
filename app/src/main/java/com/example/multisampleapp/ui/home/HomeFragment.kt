@@ -60,6 +60,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             }
         })
 
+        homeButton.setOnClickListener {
+            listStatus.text = "Hello New World"
+        }
+
         listStatus.text = "Scroll Down"
     }
 
