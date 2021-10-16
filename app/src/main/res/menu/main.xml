@@ -1,9 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+  xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+      android:id="@+id/letterCommand_delete"
+      android:title="delete"
+      android:icon="@drawable/ic_baseline_arrow_back_back_24"
+      app:showAsAction="always"
+      android:iconTint="#777"/>
+    <item
+      android:id="@+id/letterCommand_archive"
+      app:showAsAction="always"
+      android:title="archive"
+      android:icon="@drawable/ic_baseline_arrow_back_back_24"
+      android:iconTint="#777" />
+
+    <item
+      android:id="@+id/letterCommand_ref"
+      android:title="Refrences"
+      app:showAsAction="always"
+      android:iconTint="#777"
+      android:icon="@drawable/ic_baseline_reply_24"/>
+
+    <item
+      android:id="@+id/letterCommand_receivers"
+      android:title="Recievers"
+      app:showAsAction="never"
+      android:iconTint="#777"/>
+
+    <item
+      android:id="@+id/letterCommand_moveToFolder"
+      android:title="Move To Folder..."
+      app:showAsAction="never"
+      android:iconTint="#777"/>
+
+    <item
+      android:id="@+id/letterCommand_setUnread"
+      android:title="Set as unread"
+      app:showAsAction="never"
+      android:iconTint="#777"/>
+
+    <item
+      android:id="@+id/letterCommand_close"
+      android:title="Close"
+      app:showAsAction="never"
+      android:iconTint="#777"/>
+
+    <item
+      android:id="@+id/letterCommand_note"
+      android:title="Note"
+      app:showAsAction="never"
+      android:iconTint="#777"/>
 </menu>

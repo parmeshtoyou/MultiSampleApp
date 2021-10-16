@@ -35,7 +35,7 @@ class HomeViewModel : ViewModel() {
         }
 
         val mutableList = mutableListOf<ItemModel>()
-        groupByText1.forEach() { entry ->
+        groupByText1.forEach { entry ->
             entry.value.forEach {
                 mutableList.add(it)
             }
