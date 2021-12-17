@@ -31,6 +31,8 @@
       android:id="@+id/letterCommand_moveToFolder"
       android:title="Move To Folder..."
       app:showAsAction="never"
+      android:checkable="true"
+      android:checked="false"
       android:iconTint="#777"/>
 
     <item
